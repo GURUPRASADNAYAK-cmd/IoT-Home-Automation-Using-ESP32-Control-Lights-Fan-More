@@ -1,0 +1,18 @@
+
+#include <ThingerESP32.h>
+#define USERNAME "............"
+#define DEVICE_ID "...................."
+#define DEVICE_CREDENTIAL "..................."
+#define SSID ".................."
+#define SSID_PASSWORD "................"
+
+ThingerESP32 thing(USERNAME, DEVICE_ID, DEVICE_CREDENTIAL);
+void setup() {
+  pinMode(2, OUTPUT);
+  thing.add_wifi(SSID, SSID_PASSWORD);
+  thing["Relay"] << digitalPin(2);
+}
+void loop() {
+  thing.handle();
+}
+
